@@ -1,0 +1,1187 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SEU Student Portal — Fee, Waiver, CGPA &amp; Academic Toolkit</title>
+  <meta name="description" content="Unofficial student portal for Southeast University (SEU), Bangladesh. Based on publicly available information — calculate semester fees, 4/5-year degree costs, check tuition waivers, track installment payments, and compute CGPA. Always verify with the SEU Accounts Office." />
+
+  <!-- SVG Favicon (SEU Shield Style) -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' stop-color='%230f2942'/%3E%3Cstop offset='100%25' stop-color='%230d9488'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='14' fill='url(%23g)'/%3E%3Cpath d='M32 12L12 22l20 10 20-10-20-10zm0 26l-14-7v11c0 6 6.3 10 14 10s14-4 14-10V31l-14 7z' fill='%23ffffff'/%3E%3C/svg%3E" />
+
+  <!-- Google Fonts: Inter & Poppins -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Poppins:wght@600;700;800&amp;display=swap" rel="stylesheet" />
+
+  <!-- Main Stylesheet -->
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+  <!-- Skip Link for Accessibility -->
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <!-- =========================================================
+       STICKY NAVIGATION BAR
+       ========================================================= -->
+  <header class="site-header" id="top">
+    <div class="container nav-container">
+      <!-- Brand Logo & Title -->
+      <a href="#hero-section" class="brand-link" aria-label="SEU Student Portal Home">
+        <div class="brand-icon" aria-hidden="true">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+          </svg>
+        </div>
+        <div class="brand-text">
+          <span class="brand-title">SEU Student Portal</span>
+          <span class="brand-subtitle">Unofficial Student Tool</span>
+        </div>
+      </a>
+
+      <!-- Desktop Navigation Links (Compact single-line labels at 1024px and 1280px) -->
+      <nav class="desktop-nav" aria-label="Primary Navigation">
+        <a href="#fee-section" class="nav-link">Fee Calc</a>
+        <a href="#full-degree-cost-card" class="nav-link">Total Cost</a>
+        <a href="#waiver-section" class="nav-link">Waiver</a>
+        <a href="#tracker-section" class="nav-link">Tracker</a>
+        <a href="#grade-section" class="nav-link">CGPA</a>
+        <a href="#documents-section" class="nav-link">Docs</a>
+        <a href="#payment-guide-section" class="nav-link">Payment</a>
+        <a href="#faq-section" class="nav-link">FAQ</a>
+      </nav>
+
+      <!-- Header Right Controls (Active Batch Pill, Theme Toggle, Hamburger) -->
+      <div class="nav-actions">
+        <a href="#global-selector-bar" class="active-batch-pill" id="nav-batch-pill" title="Click to change Department or Batch">
+          <span class="pulse-dot" aria-hidden="true"></span>
+          <span id="nav-batch-label">CSE • Batch 73</span>
+        </a>
+
+        <button type="button" class="icon-btn" id="theme-toggle-btn" aria-label="Toggle dark or light mode" title="Toggle Dark/Light Mode">
+          <!-- Sun Icon (shown in dark mode) -->
+          <svg class="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <circle cx="12" cy="12" r="5"/>
+            <line x1="12" y1="1" x2="12" y2="3"/>
+            <line x1="12" y1="21" x2="12" y2="23"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="1" y1="12" x2="3" y2="12"/>
+            <line x1="21" y1="12" x2="23" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+          <!-- Moon Icon (shown in light mode) -->
+          <svg class="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+          </svg>
+        </button>
+
+        <button type="button" class="icon-btn mobile-menu-btn" id="mobile-menu-btn" aria-expanded="false" aria-controls="mobile-nav-menu" aria-label="Open navigation menu">
+          <svg class="icon-hamburger" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+            <line x1="3" y1="6" x2="21" y2="6"/>
+            <line x1="3" y1="12" x2="21" y2="12"/>
+            <line x1="3" y1="18" x2="21" y2="18"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- Mobile Navigation Drawer -->
+    <nav class="mobile-nav" id="mobile-nav-menu" aria-label="Mobile Navigation" hidden>
+      <div class="container mobile-nav-inner">
+        <a href="#fee-section" class="mobile-nav-link">Fee Calculator</a>
+        <a href="#full-degree-cost-card" class="mobile-nav-link">4/5-Year Total Degree Cost</a>
+        <a href="#waiver-section" class="mobile-nav-link">Waiver Eligibility Checker</a>
+        <a href="#tracker-section" class="mobile-nav-link">Payment Tracker &amp; Countdown</a>
+        <a href="#grade-section" class="mobile-nav-link">Grade / CGPA Calculator</a>
+        <a href="#documents-section" class="mobile-nav-link">Batch Documents</a>
+        <a href="#payment-guide-section" class="mobile-nav-link">Payment Method Guide</a>
+        <a href="#faq-section" class="mobile-nav-link">Frequently Asked Questions</a>
+        <a href="#source-files-section" class="mobile-nav-link">Project Source Code &amp; JSON</a>
+      </div>
+    </nav>
+  </header>
+
+  <main id="main-content">
+    <!-- =========================================================
+         1. HERO SECTION
+         ========================================================= -->
+    <section class="hero-section" id="hero-section">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="hero-badge">
+            <span class="badge-dot"></span>
+            <span>All 11 SEU Departments • 12 Batches Each • Unofficial Student Tool</span>
+          </div>
+          <h1 class="hero-title">SEU Student Portal</h1>
+          <p class="hero-description">
+            Estimate your semester tuition, 40/30/30 installments, and full 4 or 5-year degree cost for CSE, BBA, English, Pharmacy, LLB, Textile, ICT, EEE, Architecture, Economics, and Bangla at Southeast University (SEU). Based on publicly available information — always verify with the SEU Accounts Office.
+          </p>
+          <div class="hero-buttons">
+            <a href="#fee-section" class="btn btn-primary">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="4" y="2" width="16" height="20" rx="2"/>
+                <line x1="8" y1="6" x2="16" y2="6"/>
+                <line x1="8" y1="10" x2="16" y2="10"/>
+                <line x1="8" y1="14" x2="12" y2="14"/>
+              </svg>
+              Fee Calculator
+            </a>
+            <a href="#grade-section" class="btn btn-accent">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+                <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+              </svg>
+              CGPA Calculator
+            </a>
+            <a href="#documents-section" class="btn btn-outline-light">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
+                <polyline points="14 2 14 8 20 8"/>
+              </svg>
+              Documents
+            </a>
+          </div>
+        </div>
+
+        <!-- Hero Quick Summary / Live Batch Snapshot Card -->
+        <div class="hero-card" aria-label="Selected Batch Quick Summary">
+          <div class="hero-card-header">
+            <div>
+              <span class="hero-card-eyebrow" id="hero-school-eyebrow">SCHOOL OF ENGINEERING (SE)</span>
+              <h2 class="hero-card-title" id="hero-profile-title">CSE — Batch 73 (Fall 2026)</h2>
+            </div>
+            <span class="hero-card-tag" id="hero-updated-tag">Updated: 6 Nov 2026</span>
+          </div>
+          <div class="hero-stats-grid">
+            <div class="hero-stat-item">
+              <span class="hero-stat-label">Tuition Per Credit</span>
+              <strong class="hero-stat-value" id="hero-stat-credit">৳ 5,500</strong>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-label">Total Credits &amp; Duration</span>
+              <strong class="hero-stat-value" id="hero-stat-sem">Sem 1 • 141 Cr (4Y)</strong>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-label">4/5-Yr Approx. Total Cost</span>
+              <strong class="hero-stat-value" id="hero-stat-lab">৳ 8,42,500</strong>
+            </div>
+            <div class="hero-stat-item">
+              <span class="hero-stat-label">Merit Scholarship</span>
+              <strong class="hero-stat-value" id="hero-stat-waiver">Up to 50%</strong>
+            </div>
+          </div>
+          <div class="hero-card-footer">
+            <span>Based on publicly available information. Unofficial student tool. Always verify with the SEU Accounts Office.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         GLOBAL DEPARTMENT & BATCH SELECTOR BAR
+         ========================================================= -->
+    <section class="selector-section" id="global-selector-bar" aria-label="Global Department and Batch Selector">
+      <div class="container">
+        <div class="selector-card">
+          <div class="selector-intro">
+            <div class="selector-icon" aria-hidden="true">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
+                <circle cx="9" cy="7" r="4"/>
+                <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
+                <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+              </svg>
+            </div>
+            <div>
+              <h2 class="selector-title">Select Your Department &amp; Batch</h2>
+              <p class="selector-subtitle">Includes all 11 SEU departments and 12 batches per department (current batch back 11 batches).</p>
+            </div>
+          </div>
+
+          <div class="selector-controls">
+            <div class="form-group selector-group">
+              <label for="global-dept-select" class="form-label">Department (11 Programs)</label>
+              <select id="global-dept-select" class="form-select">
+                <!-- Populated dynamically from data/departments.json -->
+              </select>
+            </div>
+
+            <div class="form-group selector-group">
+              <label for="global-batch-select" class="form-label">Batch &amp; Intake Semester</label>
+              <select id="global-batch-select" class="form-select">
+                <!-- Populated dynamically based on selected department -->
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         2. SEMESTER FEE CALCULATOR + 4/5-YEAR TOTAL COST + WAIVER + TRACKER
+         ========================================================= -->
+    <section class="section" id="fee-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">FEATURE 1 • TUITION, INSTALLMENTS &amp; 4/5-YEAR COST</span>
+            <h2 class="section-title">Semester Fee &amp; Total Degree Cost Calculator</h2>
+            <p class="section-desc">Based on publicly available information. Unofficial student tool. Always verify with the SEU Accounts Office.</p>
+          </div>
+          <div class="last-updated-pill">
+            <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="12" cy="12" r="10"/>
+              <polyline points="12 6 12 12 16 14"/>
+            </svg>
+            <span>Data last updated: <strong id="fee-last-updated-text">6 Nov 2026</strong></span>
+          </div>
+        </div>
+
+        <!-- Visible Unofficial Disclaimer Banner Near Fee Calculator -->
+        <div class="alert alert-warning" role="note">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <circle cx="12" cy="12" r="10"/>
+            <line x1="12" y1="8" x2="12" y2="12"/>
+            <line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+          <span><strong>Disclaimer:</strong> Based on publicly available information. Unofficial student tool. Always verify with the SEU Accounts Office.</span>
+        </div>
+
+        <!-- Batch Info Card -->
+        <div class="batch-info-card" id="batch-info-card">
+          <div class="batch-info-top">
+            <div>
+              <span class="badge badge-primary" id="info-dept-badge">Department</span>
+              <h3 class="batch-info-heading" id="info-batch-heading">Batch Rate &amp; 4/5-Year Degree Summary</h3>
+            </div>
+            <span class="waiver-base-tag" id="info-waiver-base-tag">Waiver applied on: Tuition Fee Only</span>
+          </div>
+
+          <div class="batch-rates-grid">
+            <div class="rate-box">
+              <span class="rate-label">Tuition Per Credit</span>
+              <strong class="rate-value" id="info-per-credit">৳ 5,500</strong>
+              <span class="rate-hint" id="info-credits-duration-hint">141 Credits • 4 Years (12 Semesters)</span>
+            </div>
+            <div class="rate-box">
+              <span class="rate-label">Total Tuition (Full Degree)</span>
+              <strong class="rate-value" id="info-semester-fee">৳ 7,75,500</strong>
+              <span class="rate-hint" id="info-tuition-calc-hint">141 credits × ৳ 5,500</span>
+            </div>
+            <div class="rate-box">
+              <span class="rate-label">One-Time Activity + Lab Fees</span>
+              <strong class="rate-value" id="info-lab-fee">৳ 67,000</strong>
+              <span class="rate-hint" id="info-onetime-hint">Activity: ৳ 25,000 • Lab: ৳ 42,000</span>
+            </div>
+            <div class="rate-box highlight-rate-box">
+              <span class="rate-label" id="info-approx-label">Approx. Total Cost (4 Years)</span>
+              <strong class="rate-value" id="info-approx-total">৳ 8,42,500</strong>
+              <span class="rate-hint">Estimated Total (+ ৳ 23,100 at Admission)</span>
+            </div>
+          </div>
+
+          <div class="batch-waiver-summary">
+            <h4 class="waiver-summary-title">Scholarship &amp; Waiver Rules in Data File (Confirm with SEU Accounts Office):</h4>
+            <div class="waiver-pills-wrap" id="info-waiver-rules-list">
+              <!-- Populated by js/fee.js -->
+            </div>
+          </div>
+        </div>
+
+        <!-- Calculator Inputs + Step-by-Step Result Grid -->
+        <div class="calc-grid">
+          <!-- Left Column: Inputs Card -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">1. Enter Semester Course Load &amp; Waiver</h3>
+              <p class="card-subtitle">Adjust your per-credit rate, credits, lab fee, or waiver percentage below.</p>
+            </div>
+
+            <form id="fee-calc-form" novalidate>
+              <!-- Per Credit Fee Input (Auto-filled per batch, editable in real time) -->
+              <div class="form-group">
+                <div class="label-row">
+                  <label for="fee-per-credit-input" class="form-label">Per Credit Tuition Fee (BDT)</label>
+                  <span class="form-hint" id="batch-credit-rate-badge" style="margin-top:0;">Auto-filled from selected batch</span>
+                </div>
+                <input
+                  type="number"
+                  id="fee-per-credit-input"
+                  class="form-input"
+                  value="5500"
+                  min="500"
+                  max="25000"
+                  step="50"
+                  required
+                />
+                <div class="preset-chips" role="group" aria-label="Per credit rate presets">
+                  <span class="preset-label">Rate mode:</span>
+                  <button type="button" class="chip-btn rate-preset-btn active" id="btn-batch-rate">Selected Batch Rate</button>
+                  <button type="button" class="chip-btn rate-preset-btn" id="btn-latest-rate">Latest 2026 Rate</button>
+                </div>
+              </div>
+
+              <!-- Credits Input -->
+              <div class="form-group">
+                <label for="fee-credits-input" class="form-label">
+                  Number of Credits Taking This Semester
+                  <span class="required-star" aria-hidden="true">*</span>
+                </label>
+                <input
+                  type="number"
+                  id="fee-credits-input"
+                  class="form-input"
+                  value="12"
+                  min="0.5"
+                  max="35"
+                  step="0.5"
+                  required
+                />
+                <div class="preset-chips" role="group" aria-label="Quick credit presets">
+                  <span class="preset-label">Quick pick:</span>
+                  <button type="button" class="chip-btn credit-preset-btn" data-credits="9">9 Cr</button>
+                  <button type="button" class="chip-btn credit-preset-btn active" data-credits="12">12 Cr</button>
+                  <button type="button" class="chip-btn credit-preset-btn" data-credits="13.5">13.5 Cr</button>
+                  <button type="button" class="chip-btn credit-preset-btn" data-credits="15">15 Cr</button>
+                  <button type="button" class="chip-btn credit-preset-btn" data-credits="18">18 Cr</button>
+                </div>
+              </div>
+
+              <!-- Lab / Other / Activity Fee Input with Mode Presets -->
+              <div class="form-group">
+                <div class="label-row">
+                  <label for="fee-lab-input" class="form-label">Lab / Activity / Other Fee This Semester (BDT)</label>
+                  <button type="button" class="text-link-btn" id="reset-lab-fee-btn">Reset to batch default</button>
+                </div>
+                <input
+                  type="number"
+                  id="fee-lab-input"
+                  class="form-input"
+                  value="5583"
+                  min="0"
+                  max="200000"
+                  step="50"
+                />
+                <div class="preset-chips" role="group" aria-label="Lab and fixed fee mode presets">
+                  <span class="preset-label">Fee mode:</span>
+                  <button type="button" class="chip-btn fee-mode-btn active" data-mode="avg" id="mode-btn-avg">Per-Sem Avg of Activity &amp; Lab</button>
+                  <button type="button" class="chip-btn fee-mode-btn" data-mode="zero" id="mode-btn-zero">৳ 0 (Tuition + Transport Only)</button>
+                  <button type="button" class="chip-btn fee-mode-btn" data-mode="admission" id="mode-btn-admission">1st Sem (+ ৳ 23,100 Admission)</button>
+                </div>
+                <span class="form-hint" id="fee-lab-hint">Per-semester Transport Charge (৳ 300/sem, or ৳ 450/sem for LLB &amp; Pharmacy) is included in Fixed Semester Fee.</span>
+              </div>
+
+              <!-- Waiver Percentage Dropdown -->
+              <div class="form-group">
+                <label for="fee-waiver-select" class="form-label">Waiver / Scholarship Percentage (%)</label>
+                <select id="fee-waiver-select" class="form-select">
+                  <!-- Populated from batch's waiverRules + 0% + Custom -->
+                </select>
+              </div>
+
+              <!-- Manual Waiver Percentage Input (shown when Custom is selected) -->
+              <div class="form-group" id="fee-waiver-manual-group" hidden>
+                <label for="fee-waiver-manual-input" class="form-label">Custom / Manual Waiver Percentage (0% – 100%)</label>
+                <input
+                  type="number"
+                  id="fee-waiver-manual-input"
+                  class="form-input"
+                  value="0"
+                  min="0"
+                  max="100"
+                  step="1"
+                />
+              </div>
+
+              <!-- Validation Error Message Box -->
+              <div class="alert alert-error" id="fee-error-msg" role="alert" hidden></div>
+            </form>
+
+            <!-- Multi-Year 4/5-Year Total Degree Cost Estimator Card -->
+            <div class="degree-cost-summary-box" id="full-degree-cost-card">
+              <div class="degree-cost-header">
+                <span class="section-eyebrow">FULL PROGRAM ESTIMATE</span>
+                <h4 class="degree-cost-title" id="degree-cost-heading">Total 4-Year Degree Cost Breakdown</h4>
+              </div>
+              <div class="table-responsive">
+                <table class="breakdown-table compact-table" aria-label="Full 4 or 5 Year Program Cost Breakdown">
+                  <tbody>
+                    <tr>
+                      <td>
+                        <strong>Full Degree Tuition Fee</strong>
+                        <div class="table-subtext" id="deg-tuition-formula">141 credits × ৳ 5,500</div>
+                      </td>
+                      <td class="amount-col" id="deg-tuition-val">৳ 7,75,500</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Student Activity Fee (One-time)</strong>
+                      </td>
+                      <td class="amount-col" id="deg-activity-val">৳ 25,000</td>
+                    </tr>
+                    <tr>
+                      <td>
+                        <strong>Laboratory Fee (One-time)</strong>
+                      </td>
+                      <td class="amount-col" id="deg-lab-val">৳ 42,000</td>
+                    </tr>
+                    <tr id="deg-noncredit-row">
+                      <td>
+                        <strong>Non-Credit / Vendor Fee (One-time)</strong>
+                      </td>
+                      <td class="amount-col" id="deg-noncredit-val">N/A (৳ 0)</td>
+                    </tr>
+                    <tr class="row-subtotal">
+                      <td>
+                        <strong id="deg-approx-label">Approximate Total Cost (4 Years, Before Waiver)</strong>
+                        <div class="table-subtext">Tuition + Activity + Lab + Non-Credit Fees</div>
+                      </td>
+                      <td class="amount-col" id="deg-approx-val">৳ 8,42,500</td>
+                    </tr>
+                    <tr class="row-waiver">
+                      <td>
+                        <strong>Estimated 4/5-Yr Waiver Savings (<span id="deg-waiver-pct">0%</span>)</strong>
+                        <div class="table-subtext">If maintained across all semesters on tuition</div>
+                      </td>
+                      <td class="amount-col text-success" id="deg-waiver-val">- ৳ 0</td>
+                    </tr>
+                    <tr class="row-net-payable">
+                      <td>
+                        <strong>Net 4/5-Year Cost After Waiver</strong>
+                        <div class="table-subtext" id="deg-with-admission-note">Plus ৳ 23,100 one-time Admission Fee = ৳ 8,65,600</div>
+                      </td>
+                      <td class="amount-col net-payable-highlight" id="deg-net-val">৳ 8,42,500</td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Step-by-Step Semester Fee Breakdown & 40/30/30 Split -->
+          <div class="card printable-area" id="fee-result-card">
+            <div class="card-header card-header-split">
+              <div>
+                <h3 class="card-title">2. Detailed Semester Fee Breakdown</h3>
+                <p class="card-subtitle" id="fee-result-subtitle">CSE • Batch 73 (Fall 2026) • 12 Credits</p>
+              </div>
+              <button type="button" class="btn btn-secondary btn-sm no-print" id="print-fee-btn">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                  <polyline points="6 9 6 2 18 2 18 9"/>
+                  <path d="M6 18H4a2 2 0 0 1-2-2v-5a2 2 0 0 1 2-2h16a2 2 0 0 1 2 2v5a2 2 0 0 1-2 2h-2"/>
+                  <rect x="6" y="14" width="12" height="8"/>
+                </svg>
+                Print / Save as PDF
+              </button>
+            </div>
+
+            <!-- Step-by-Step Breakdown Table -->
+            <div class="table-responsive">
+              <table class="breakdown-table" aria-label="Semester Fee Calculation Breakdown">
+                <tbody>
+                  <tr>
+                    <td>
+                      <strong>Semester Tuition Fee</strong>
+                      <div class="table-subtext" id="breakdown-tuition-formula">12 credits × ৳ 5,500</div>
+                    </td>
+                    <td class="amount-col" id="breakdown-tuition-val">৳ 66,000</td>
+                  </tr>
+                  <tr>
+                    <td>
+                      <strong>Fixed Semester &amp; Lab/Other Fees</strong>
+                      <div class="table-subtext" id="breakdown-fixed-formula">Transport (৳ 300) + Lab/Activity/Other (৳ 5,583)</div>
+                    </td>
+                    <td class="amount-col" id="breakdown-fixed-val">৳ 5,883</td>
+                  </tr>
+                  <tr class="row-subtotal">
+                    <td>
+                      <strong>Total Gross Semester Fee</strong>
+                      <div class="table-subtext">Tuition + Fixed Semester Fees</div>
+                    </td>
+                    <td class="amount-col" id="breakdown-total-val">৳ 71,883</td>
+                  </tr>
+                  <tr class="row-waiver">
+                    <td>
+                      <strong>Waiver Deduction (<span id="breakdown-waiver-pct">0%</span>)</strong>
+                      <div class="table-subtext" id="breakdown-waiver-note">Applied on tuition fee</div>
+                    </td>
+                    <td class="amount-col text-success" id="breakdown-waiver-val">- ৳ 0</td>
+                  </tr>
+                  <tr class="row-net-payable">
+                    <td>
+                      <strong>Net Payable This Semester</strong>
+                      <div class="table-subtext">Total Fee minus Waiver Amount</div>
+                    </td>
+                    <td class="amount-col net-payable-highlight" id="breakdown-net-val">৳ 71,883</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+
+            <!-- Visual Progress-Bar Style Split for 40% / 30% / 30% -->
+            <div class="split-visual-box">
+              <div class="split-visual-header">
+                <span class="split-visual-title">Installment Split (40% / 30% / 30%)</span>
+                <span class="split-visual-note">1st Sem: 20% at Admission + 20% at Registration = 40%</span>
+              </div>
+              <div class="split-bar" role="img" aria-label="Installment split: 40% first installment, 30% second installment, 30% third installment">
+                <div class="split-segment seg-1" style="width: 40%;">
+                  <span>1st: 40%</span>
+                </div>
+                <div class="split-segment seg-2" style="width: 30%;">
+                  <span>2nd: 30%</span>
+                </div>
+                <div class="split-segment seg-3" style="width: 30%;">
+                  <span>3rd: 30%</span>
+                </div>
+              </div>
+            </div>
+
+            <!-- 3 Installment Cards + Remaining Balance Rows -->
+            <div class="installments-breakdown-list">
+              <!-- 1st Installment -->
+              <div class="inst-row-card inst-1">
+                <div class="inst-row-main">
+                  <div>
+                    <span class="inst-badge">1st Installment • 40% (During Registration)</span>
+                    <div class="inst-due" id="inst-1-due">Due Date: 5 Nov 2026</div>
+                  </div>
+                  <strong class="inst-amount" id="inst-1-amount">৳ 28,753</strong>
+                </div>
+                <div class="inst-remaining-row">
+                  <span>Remaining after 1st installment:</span>
+                  <strong id="rem-after-1">৳ 43,130</strong>
+                </div>
+              </div>
+
+              <!-- 2nd Installment -->
+              <div class="inst-row-card inst-2">
+                <div class="inst-row-main">
+                  <div>
+                    <span class="inst-badge">2nd Installment • 30% (Before Midterm Exam)</span>
+                    <div class="inst-due" id="inst-2-due">Due Date: 30 Nov 2026</div>
+                  </div>
+                  <strong class="inst-amount" id="inst-2-amount">৳ 21,565</strong>
+                </div>
+                <div class="inst-remaining-row">
+                  <span>Remaining after 2nd installment:</span>
+                  <strong id="rem-after-2">৳ 21,565</strong>
+                </div>
+              </div>
+
+              <!-- 3rd Installment -->
+              <div class="inst-row-card inst-3">
+                <div class="inst-row-main">
+                  <div>
+                    <span class="inst-badge">3rd Installment • 30% (Before Final Exam)</span>
+                    <div class="inst-due" id="inst-3-due">Due Date: 14 Jan 2027</div>
+                  </div>
+                  <strong class="inst-amount" id="inst-3-amount">৳ 21,565</strong>
+                </div>
+                <div class="inst-remaining-row">
+                  <span>Total of 3 installments (100% Net Payable):</span>
+                  <strong id="inst-total-verify">৳ 71,883</strong>
+                </div>
+              </div>
+            </div>
+
+            <p class="form-hint" style="margin-top: 0.75rem;">
+              Due dates come from the data file. Confirm with the official notice.
+            </p>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             ALL-DEPARTMENTS 4/5-YEAR TUITION & TOTAL COST TABLE CARD
+             ========================================================= -->
+        <div class="sub-feature-block">
+          <div class="card">
+            <div class="card-header card-header-split">
+              <div>
+                <span class="section-eyebrow">REFERENCE TABLE (ALL 11 UNDERGRADUATE PROGRAMS)</span>
+                <h3 class="card-title">All Departments — Per Credit &amp; Total 4/5-Year Cost Comparison</h3>
+                <p class="card-subtitle">Based on publicly available information (excludes one-time ৳ 23,100 Admission Fee and ৳ 300/450 per-semester Transport Charge). Always verify with the SEU Accounts Office.</p>
+              </div>
+            </div>
+            <div class="table-responsive">
+              <table class="grading-table all-depts-table" aria-label="All Departments 4 and 5 Year Tuition and Total Cost">
+                <thead>
+                  <tr>
+                    <th>Program Name &amp; Duration</th>
+                    <th>Total Credits</th>
+                    <th>Tuition Per Credit (Tk)</th>
+                    <th>Total Tuition (Tk)</th>
+                    <th>Student Activity Fee (One-time)</th>
+                    <th>Laboratory Fee (One-time)</th>
+                    <th>Non-Credit / Vendor Fee (One-time)</th>
+                    <th>Approximate Total Cost (Tk)</th>
+                  </tr>
+                </thead>
+                <tbody id="all-depts-cost-tbody">
+                  <!-- Populated dynamically from data/departments.json by js/app.js -->
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             FEATURE 2: WAIVER ELIGIBILITY CHECKER (Near Fee Calculator)
+             ========================================================= -->
+        <div class="sub-feature-block" id="waiver-section">
+          <div class="card waiver-checker-card">
+            <div class="card-header">
+              <div>
+                <span class="section-eyebrow">FEATURE 2 • MERIT &amp; ENTRY SCHOLARSHIP</span>
+                <h3 class="card-title">Waiver Eligibility Checker</h3>
+                <p class="card-subtitle">Enter your SSC GPA, HSC GPA (including 4th subject), or previous Semester TGPA/CGPA to see the highest waiver tier you qualify for in <strong id="waiver-batch-label">CSE Batch 73</strong>.</p>
+              </div>
+            </div>
+
+            <div class="waiver-grid">
+              <!-- Waiver Checker Inputs -->
+              <div class="waiver-inputs-col">
+                <div class="form-row-2">
+                  <div class="form-group">
+                    <label for="waiver-ssc-input" class="form-label">SSC GPA (out of 5.00)</label>
+                    <input
+                      type="number"
+                      id="waiver-ssc-input"
+                      class="form-input"
+                      min="0"
+                      max="5"
+                      step="0.01"
+                    />
+                  </div>
+                  <div class="form-group">
+                    <label for="waiver-hsc-input" class="form-label">HSC GPA (out of 5.00)</label>
+                    <input
+                      type="number"
+                      id="waiver-hsc-input"
+                      class="form-input"
+                      min="0"
+                      max="5"
+                      step="0.01"
+                    />
+                  </div>
+                </div>
+
+                <div class="form-group">
+                  <label for="waiver-cgpa-input" class="form-label">Previous Semester TGPA / CGPA (out of 4.00)</label>
+                  <input
+                    type="number"
+                    id="waiver-cgpa-input"
+                    class="form-input"
+                    min="0"
+                    max="4"
+                    step="0.01"
+                  />
+                  <span class="form-hint">Based on publicly available SEU scholarship terms: Combined SSC+HSC GPA 10.00 = 50% (25% for Pharmacy/LLB), GPA 9.50 = 30%, GPA 9.00 = 10%. Semester TGPA 4.00 = 40%, 3.90–3.99 = 30%, 3.80–3.89 = 20%.</span>
+                </div>
+
+                <div class="alert alert-error" id="waiver-error-msg" role="alert" hidden></div>
+
+                <p class="policy-disclaimer-inline">
+                  <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                    <circle cx="12" cy="12" r="10"/>
+                    <line x1="12" y1="8" x2="12" y2="12"/>
+                    <line x1="12" y1="16" x2="12.01" y2="16"/>
+                  </svg>
+                  <span>Waiver rules may change. Verify with SEU Accounts Office.</span>
+                </p>
+              </div>
+
+              <!-- Waiver Checker Live Output Box -->
+              <div class="waiver-result-col" id="waiver-result-box">
+                <div class="waiver-status-badge" id="waiver-status-badge">Enter GPA / CGPA Above</div>
+                <div class="waiver-big-display">
+                  <div>
+                    <span class="waiver-metric-label">Eligible Waiver</span>
+                    <strong class="waiver-metric-pct" id="waiver-eligible-pct">0%</strong>
+                  </div>
+                  <div class="waiver-divider" aria-hidden="true"></div>
+                  <div>
+                    <span class="waiver-metric-label">Savings This Semester</span>
+                    <strong class="waiver-metric-taka" id="waiver-eligible-taka">৳ 0</strong>
+                  </div>
+                </div>
+
+                <p class="waiver-matched-rule" id="waiver-matched-rule-text">
+                  Type your SSC/HSC GPA or Semester CGPA to check your eligibility.
+                </p>
+
+                <!-- Next Higher Waiver Level Box -->
+                <div class="next-tier-box" id="waiver-next-tier-box">
+                  <span class="next-tier-label">Next Higher Waiver Tier:</span>
+                  <p class="next-tier-text" id="waiver-next-tier-text">—</p>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-block" id="apply-waiver-btn">
+                  Apply this waiver to fee calculator
+                </button>
+                <div class="apply-feedback" id="apply-waiver-feedback" aria-live="polite"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- =========================================================
+             FEATURE 4 & 3: DUE DATE COUNTDOWN + PAYMENT TRACKER
+             ========================================================= -->
+        <div class="sub-feature-block" id="tracker-section">
+          <!-- Feature 4: Due Date Countdown Banner -->
+          <div class="countdown-banner" id="countdown-card">
+            <div class="countdown-left">
+              <span class="countdown-eyebrow">FEATURE 4 • DUE DATE COUNTDOWN</span>
+              <h3 class="countdown-title" id="countdown-title">Next Unpaid Installment</h3>
+              <p class="countdown-subtitle" id="countdown-subtitle">Checking installment schedule for your batch...</p>
+            </div>
+            <div class="countdown-right">
+              <div class="countdown-metric">
+                <span class="countdown-metric-label">Amount Due</span>
+                <strong class="countdown-metric-val" id="countdown-amount">৳ 0</strong>
+              </div>
+              <div class="countdown-badge" id="countdown-status-badge">Loading...</div>
+            </div>
+          </div>
+
+          <!-- Feature 3: Payment Tracker Card -->
+          <div class="card tracker-card">
+            <div class="card-header card-header-split">
+              <div>
+                <span class="section-eyebrow">FEATURE 3 • BROWSER PAYMENT LOG (NO LOGIN)</span>
+                <h3 class="card-title">Semester Installment Payment Tracker</h3>
+                <p class="card-subtitle">Tick installments as you pay them and save your bKash/Nagad TrxID or bank receipt number for <strong id="tracker-batch-label">CSE — Batch 73</strong>. Due dates come from the data file. Confirm with the official notice.</p>
+              </div>
+              <button type="button" class="btn btn-danger-outline btn-sm" id="reset-tracker-btn">
+                Reset tracker
+              </button>
+            </div>
+
+            <!-- Tracker Overall Progress Bar & Summary Stats -->
+            <div class="tracker-summary-box">
+              <div class="tracker-stats-row">
+                <div class="tracker-stat">
+                  <span class="tracker-stat-label">Total Paid</span>
+                  <strong class="tracker-stat-val text-success" id="tracker-total-paid">৳ 0</strong>
+                </div>
+                <div class="tracker-stat">
+                  <span class="tracker-stat-label">Total Remaining</span>
+                  <strong class="tracker-stat-val text-warning" id="tracker-total-remaining">৳ 0</strong>
+                </div>
+                <div class="tracker-stat">
+                  <span class="tracker-stat-label">Installments Completed</span>
+                  <strong class="tracker-stat-val" id="tracker-done-count">0 / 3 Done</strong>
+                </div>
+              </div>
+
+              <div class="progress-track" role="progressbar" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0" id="tracker-progressbar-wrap">
+                <div class="progress-fill" id="tracker-progress-fill" style="width: 0%;"></div>
+              </div>
+            </div>
+
+            <!-- 3 Installment Checklist Rows -->
+            <div class="tracker-list" id="tracker-installments-list">
+              <!-- Rendered dynamically by js/tracker.js -->
+            </div>
+
+            <div class="tracker-footer-note">
+              <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+                <rect x="3" y="11" width="18" height="11" rx="2" ry="2"/>
+                <path d="M7 11V7a5 5 0 0 1 10 0v4"/>
+              </svg>
+              <span>Data is saved only in your browser (stored separately for each Department &amp; Batch). Due dates come from the data file. Confirm with the official notice.</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         3. GRADE / CGPA CALCULATOR SECTION (FEATURE 5)
+         ========================================================= -->
+    <section class="section section-alt" id="grade-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">FEATURE 5 • ACADEMIC PERFORMANCE</span>
+            <h2 class="section-title">Grade &amp; CGPA Calculator</h2>
+            <p class="section-desc">Calculate your Semester GPA, Cumulative CGPA (with course retake replacement support), and plan what GPA you need to hit your target CGPA.</p>
+          </div>
+          <span class="policy-pill">4.00 Scale • Verify with official SEU grading policy</span>
+        </div>
+
+        <div class="grade-layout-grid">
+          <!-- Left / Main Column: Semester GPA + Cumulative CGPA Calculator -->
+          <div class="card">
+            <div class="card-header">
+              <h3 class="card-title">Semester GPA &amp; Cumulative CGPA Calculator</h3>
+              <p class="card-subtitle">Enter your previous record (optional for CGPA) and add this semester's courses below.</p>
+            </div>
+
+            <!-- Previous CGPA & Completed Credits Box -->
+            <div class="prev-record-box">
+              <h4 class="box-subtitle">Previous Academic Record (Optional — for Cumulative CGPA)</h4>
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="prev-credits-input" class="form-label">Previous Completed Credits</label>
+                  <input
+                    type="number"
+                    id="prev-credits-input"
+                    class="form-input"
+                    min="0"
+                    max="200"
+                    step="0.5"
+                    value=""
+                  />
+                </div>
+                <div class="form-group">
+                  <label for="prev-cgpa-input" class="form-label">Previous CGPA (0.00 – 4.00)</label>
+                  <input
+                    type="number"
+                    id="prev-cgpa-input"
+                    class="form-input"
+                    min="0"
+                    max="4"
+                    step="0.01"
+                    value=""
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Course Rows Header -->
+            <div class="course-list-header">
+              <h4>Current Semester Courses</h4>
+              <div class="course-actions-top">
+                <button type="button" class="btn btn-secondary btn-sm" id="add-course-btn">+ Add Course</button>
+                <button type="button" class="text-link-btn" id="reset-courses-btn">Reset Courses</button>
+              </div>
+            </div>
+
+            <!-- Dynamic Course Rows Container -->
+            <div class="course-rows-container" id="course-rows-container">
+              <!-- Populated by js/grade.js -->
+            </div>
+
+            <div class="alert alert-error" id="grade-error-msg" role="alert" hidden></div>
+
+            <!-- GPA & CGPA Result Summary Banner -->
+            <div class="gpa-results-banner">
+              <div class="gpa-result-item">
+                <span class="gpa-result-label">Semester Credits</span>
+                <strong class="gpa-result-val" id="res-sem-credits">0.0</strong>
+              </div>
+              <div class="gpa-result-item">
+                <span class="gpa-result-label">Semester GPA (SGPA)</span>
+                <strong class="gpa-result-val highlight-teal" id="res-sem-gpa">0.00</strong>
+              </div>
+              <div class="gpa-result-item">
+                <span class="gpa-result-label">Total Earned Credits</span>
+                <strong class="gpa-result-val" id="res-total-credits">0.0</strong>
+              </div>
+              <div class="gpa-result-item">
+                <span class="gpa-result-label">Updated CGPA</span>
+                <strong class="gpa-result-val highlight-blue" id="res-cum-cgpa">0.00</strong>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Target CGPA Planner + Grading Scale Card -->
+          <div class="grade-side-stack">
+            <!-- Target CGPA Planner Card -->
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title">Target CGPA Planner</h3>
+                <p class="card-subtitle">Find out what GPA you need next semester to reach your target CGPA.</p>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="target-curr-cgpa" class="form-label">Current CGPA</label>
+                  <input type="number" id="target-curr-cgpa" class="form-input" min="0" max="4" step="0.01" value="3.40" />
+                </div>
+                <div class="form-group">
+                  <label for="target-comp-credits" class="form-label">Completed Credits</label>
+                  <input type="number" id="target-comp-credits" class="form-input" min="0" max="200" step="0.5" value="60" />
+                </div>
+              </div>
+
+              <div class="form-row-2">
+                <div class="form-group">
+                  <label for="target-goal-cgpa" class="form-label">Target CGPA</label>
+                  <input type="number" id="target-goal-cgpa" class="form-input" min="0" max="4" step="0.01" value="3.50" />
+                </div>
+                <div class="form-group">
+                  <label for="target-next-credits" class="form-label">Upcoming Credits</label>
+                  <input type="number" id="target-next-credits" class="form-input" min="0.5" max="35" step="0.5" value="15" />
+                </div>
+              </div>
+
+              <div class="target-result-box" id="target-result-box">
+                <span class="target-result-label">Required GPA Next Semester:</span>
+                <strong class="target-result-gpa" id="target-required-gpa">3.90</strong>
+                <p class="target-result-note" id="target-result-note">Achievable! Stay focused on your upcoming courses.</p>
+              </div>
+            </div>
+
+            <!-- SEU Grading Scale Card -->
+            <div class="card" id="grading-scale-card">
+              <div class="card-header">
+                <h3 class="card-title">SEU Grading Scale (4.00)</h3>
+                <p class="card-subtitle" id="grading-policy-note">Default scale — verify with official SEU grading policy.</p>
+              </div>
+              <div class="table-responsive">
+                <table class="grading-table" aria-label="SEU Grading Scale">
+                  <thead>
+                    <tr>
+                      <th>Marks (%)</th>
+                      <th>Letter Grade</th>
+                      <th>Grade Point</th>
+                      <th>Remarks</th>
+                    </tr>
+                  </thead>
+                  <tbody id="grading-scale-tbody">
+                    <!-- Populated from data/grades.json -->
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         4. DOCUMENTS SECTION (FEATURE 6)
+         ========================================================= -->
+    <section class="section" id="documents-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">FEATURE 6 • SYLLABUS, ROUTINES &amp; CALENDARS</span>
+            <h2 class="section-title">Batch Documents &amp; Downloads</h2>
+            <p class="section-desc">Showing document cards for <strong id="docs-batch-label">CSE — Batch 73</strong>. Documents marked "Not uploaded yet" will become downloadable once the PDF files are added to the repository.</p>
+          </div>
+        </div>
+
+        <div class="documents-grid" id="documents-grid">
+          <!-- Populated from data/departments.json -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         5. PAYMENT METHOD GUIDE SECTION (FEATURE 7)
+         ========================================================= -->
+    <section class="section section-alt" id="payment-guide-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">FEATURE 7 • STEP-BY-STEP PAYMENT GUIDANCE</span>
+            <h2 class="section-title">Payment Method Guide</h2>
+            <p class="section-desc">General guidance for paying semester fees via Bank Deposit, bKash, Nagad, Rocket, or at the SEU Campus Booth.</p>
+          </div>
+        </div>
+
+        <!-- Official Payment Details Notice -->
+        <div class="alert alert-warning" id="payment-disclaimer-banner">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/>
+            <line x1="12" y1="9" x2="12" y2="13"/>
+            <line x1="12" y1="17" x2="12.01" y2="17"/>
+          </svg>
+          <span id="payment-disclaimer-text">Official payment details must be confirmed with the SEU Accounts Office.</span>
+        </div>
+
+        <!-- Method Filter Tabs -->
+        <div class="method-tabs" id="payment-method-tabs" role="tablist" aria-label="Payment Methods">
+          <!-- Populated from data/payment-methods.json -->
+        </div>
+
+        <!-- Method Cards Container -->
+        <div class="payment-methods-container" id="payment-methods-container">
+          <!-- Populated from data/payment-methods.json -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         6. FAQ SECTION (FEATURE 8)
+         ========================================================= -->
+    <section class="section" id="faq-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">FEATURE 8 • STUDENT HELP CENTER</span>
+            <h2 class="section-title">Frequently Asked Questions</h2>
+            <p class="section-desc">Answers explaining how the calculators work and general SEU policies. Always confirm official policies with the SEU Accounts Office.</p>
+          </div>
+        </div>
+
+        <!-- FAQ Search Bar -->
+        <div class="faq-search-wrap">
+          <label for="faq-search-input" class="sr-only">Search frequently asked questions</label>
+          <div class="search-input-box">
+            <svg class="search-icon" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+              <circle cx="11" cy="11" r="8"/>
+              <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+            </svg>
+            <input
+              type="search"
+              id="faq-search-input"
+              class="form-input search-input"
+              aria-label="Search questions by keyword"
+            />
+          </div>
+        </div>
+
+        <!-- FAQ Accordion List -->
+        <div class="faq-accordion" id="faq-accordion-list">
+          <!-- Populated from data/faq.json -->
+        </div>
+      </div>
+    </section>
+
+    <!-- =========================================================
+         PROJECT SOURCE CODE & JSON FILES EXPLORER
+         ========================================================= -->
+    <section class="section section-alt" id="source-files-section">
+      <div class="container">
+        <div class="section-header">
+          <div>
+            <span class="section-eyebrow">COMPLETE MULTI-FILE PROJECT CODE • NETLIFY READY</span>
+            <h2 class="section-title">Project Source Files &amp; JSON Data Explorer</h2>
+            <p class="section-desc">Inspect, copy, or download every individual file with its full path and complete code (<code>/index.html</code>, <code>/css/style.css</code>, <code>/js/*.js</code>, <code>/data/*.json</code>, and <code>/README.md</code>).</p>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="method-tabs" id="source-file-tabs" role="tablist" aria-label="Project Source Files">
+            <!-- Populated dynamically by js/app.js -->
+          </div>
+
+          <div class="source-viewer-header">
+            <div>
+              <span class="badge badge-primary" id="active-source-path">/index.html</span>
+              <span class="table-subtext" id="active-source-lines" style="margin-left: 0.5rem;">Complete file code</span>
+            </div>
+            <div class="source-viewer-actions">
+              <button type="button" class="btn btn-secondary btn-sm" id="copy-source-file-btn">Copy File Code</button>
+              <button type="button" class="btn btn-primary btn-sm" id="download-source-file-btn">Download File</button>
+            </div>
+          </div>
+
+          <pre class="source-code-pre"><code id="source-code-display">Select a file tab above to view its complete code...</code></pre>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- =========================================================
+       7. FOOTER
+       ========================================================= -->
+  <footer class="site-footer" id="footer-section">
+    <div class="container footer-grid">
+      <div class="footer-brand-col">
+        <div class="brand-link footer-brand">
+          <div class="brand-icon" aria-hidden="true">
+            <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
+            </svg>
+          </div>
+          <span class="brand-title">SEU Student Portal</span>
+        </div>
+        <p class="footer-disclaimer">
+          <strong>Disclaimer:</strong> Based on publicly available information. Unofficial student tool. Always verify with the SEU Accounts Office.
+        </p>
+        <p class="footer-subtext">
+          Designed for Southeast University (SEU), Bangladesh students. All data lives in easy-to-edit JSON files and your payment tracker stays private in your browser's localStorage.
+        </p>
+      </div>
+
+      <div class="footer-links-col">
+        <h3 class="footer-heading">Quick Sections</h3>
+        <ul class="footer-links">
+          <li><a href="#fee-section">Semester Fee Calculator</a></li>
+          <li><a href="#full-degree-cost-card">4/5-Year Total Degree Cost</a></li>
+          <li><a href="#waiver-section">Waiver Eligibility Checker</a></li>
+          <li><a href="#tracker-section">Payment Tracker &amp; Countdown</a></li>
+          <li><a href="#grade-section">Grade / CGPA Calculator</a></li>
+          <li><a href="#documents-section">Batch Documents</a></li>
+          <li><a href="#payment-guide-section">Payment Method Guide</a></li>
+          <li><a href="#faq-section">FAQ</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-feedback-col">
+        <h3 class="footer-heading">Found Outdated Info?</h3>
+        <p class="footer-subtext">Help keep batch fees, waiver tiers, and routines accurate for fellow SEU students.</p>
+        <button type="button" class="btn btn-accent" id="report-info-btn">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+            <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+            <line x1="4" y1="22" x2="4" y2="15"/>
+          </svg>
+          Report wrong information
+        </button>
+      </div>
+    </div>
+
+    <div class="container footer-bottom">
+      <span>&copy; 2026 SEU Student Portal (Unofficial Student Tool — Always verify with the SEU Accounts Office).</span>
+      <a href="#top" class="back-to-top-link">Back to top &uarr;</a>
+    </div>
+  </footer>
+
+  <!-- =========================================================
+       ACCESSIBLE CUSTOM MODALS (NO BROWSER ALERT/CONFIRM)
+       ========================================================= -->
+  <!-- 1. Reset Payment Tracker Confirmation Modal -->
+  <div class="modal-backdrop" id="reset-confirm-modal" role="dialog" aria-modal="true" aria-labelledby="reset-modal-title" hidden>
+    <div class="modal-card">
+      <h3 class="modal-title" id="reset-modal-title">Reset Payment Tracker?</h3>
+      <p class="modal-body-text">
+        Are you sure you want to clear all paid checkboxes, payment dates, and TrxID notes for <strong id="reset-modal-batch-name">this batch</strong>? This action cannot be undone.
+      </p>
+      <div class="modal-actions">
+        <button type="button" class="btn btn-secondary" id="cancel-reset-tracker-btn">Cancel</button>
+        <button type="button" class="btn btn-danger" id="confirm-reset-tracker-btn">Yes, Reset Tracker</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 2. Report Wrong Information Modal -->
+  <div class="modal-backdrop" id="report-info-modal" role="dialog" aria-modal="true" aria-labelledby="report-modal-title" hidden>
+    <div class="modal-card">
+      <div class="modal-header-row">
+        <h3 class="modal-title" id="report-modal-title">Report Wrong or Outdated Information</h3>
+        <button type="button" class="icon-btn" id="close-report-modal-btn" aria-label="Close modal">&times;</button>
+      </div>
+      <p class="modal-body-text">
+        Found an outdated fee rate, due date, or policy detail? Report it on GitHub Issues or send feedback directly by email:
+      </p>
+      <div class="report-links-stack">
+        <a href="https://github.com/mahfuz10-max/seu-student-portal/issues" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-block">
+          Open GitHub Issue
+        </a>
+        <a href="mailto:mdmustafizurr19@gmail.com?subject=SEU%20Student%20Portal%20feedback" class="btn btn-secondary btn-block">
+          Email Feedback (mdmustafizurr19@gmail.com)
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================================================
+       JAVASCRIPT MODULES (Plain Vanilla JS)
+       ========================================================= -->
+  <script src="js/fee.js"></script>
+  <script src="js/waiver.js"></script>
+  <script src="js/tracker.js"></script>
+  <script src="js/grade.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>

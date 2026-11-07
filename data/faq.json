@@ -1,0 +1,41 @@
+{
+  "_comment": "Frequently asked questions based on how this portal's calculators work and publicly available SEU information. Always confirm with the SEU Accounts Office.",
+  "faqs": [
+    {
+      "id": "faq-1",
+      "category": "Fees & Waivers",
+      "question": "How is the semester fee calculated in this portal?",
+      "answer": "Your semester tuition fee is calculated by multiplying the number of credits you are taking this semester by your selected per-credit tuition rate. Fixed semester fees (such as the per-semester transport charge of ৳ 300, or ৳ 450 for LLB and Pharmacy, plus any lab or activity fee you enter) are added to compute the gross total fee. Your waiver percentage is then applied (on tuition fee by default, or on total fee if configured in the batch data) and subtracted to show your net payable amount. Confirm your exact batch fee rates with the SEU Accounts Office."
+    },
+    {
+      "id": "faq-2",
+      "category": "Fees & Waivers",
+      "question": "How do I keep my tuition waiver across semesters?",
+      "answer": "Based on publicly available SEU scholarship guidelines, entry merit waivers (10%, 25%, 30%, or 50% based on SSC and HSC GPA) require maintaining a minimum required CGPA/TGPA (such as 3.50 to 3.80 depending on tier and department) and taking the required minimum regular credit load each semester (typically 12 regular credits for undergraduate programs, or 18 credits for B.Pharm and LLB, excluding internship, project, thesis, or retake courses). Semester result waivers (20% for TGPA 3.80–3.89, 30% for 3.90–3.99, and 40% for 4.00) also require meeting the minimum credit load without dropping courses. Confirm current continuation rules with the SEU Accounts Office."
+    },
+    {
+      "id": "faq-3",
+      "category": "Academics & Grading",
+      "question": "How does course retake work in the CGPA calculator and for tuition fees?",
+      "answer": "In the CGPA Calculator on this page, ticking the 'Retake Course' checkbox lets you select your previous grade so the new grade point replaces the old grade point in your cumulative CGPA without double-counting the course credits. For tuition fees, publicly available SEU scholarship terms state that tuition scholarships apply only to regular offered courses and are not allowed for retake courses. Confirm the current retake fee rate with your Department Coordinator and the SEU Accounts Office."
+    },
+    {
+      "id": "faq-4",
+      "category": "Payments & Installments",
+      "question": "What happens if an installment due date passes?",
+      "answer": "In this portal's Due Date Countdown and Payment Tracker, any installment whose due date (from the data file) has passed and is not ticked as 'Paid' is highlighted in red as overdue. At the university, paying after the announced registration or installment deadline may incur a late fine and can restrict exam admit card issuance until dues are cleared. Confirm official deadlines and late fee policies with the SEU Accounts Office."
+    },
+    {
+      "id": "faq-5",
+      "category": "Payments & Installments",
+      "question": "Can I pay my semester fee in installments?",
+      "answer": "Yes. The calculator splits your semester net payable amount into 3 installments: 40% for the 1st installment (during registration; for 1st-semester freshers, 20% at admission + 20% at registration), 30% for the 2nd installment (before the Midterm exam), and 30% for the 3rd installment (before the Final exam). Any ৳ 1 rounding difference is placed in the 3rd installment so the 3 installments add up exactly to 100% of your net payable amount. Confirm with the SEU Accounts Office."
+    },
+    {
+      "id": "faq-6",
+      "category": "Payments & Installments",
+      "question": "Where is my Payment Tracker data stored?",
+      "answer": "Your ticked installments, payment dates, and receipt/TrxID notes are saved locally in your own web browser using localStorage, stored separately for each Department and Batch. Nothing is sent to any external server, and you can clear your saved entries anytime using the 'Reset tracker' button. Always keep your physical bank receipts and mobile banking TrxID messages safe and confirm ledger updates with the SEU Accounts Office."
+    }
+  ]
+}

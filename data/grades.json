@@ -1,0 +1,16 @@
+{
+  "_comment": "Default grading scale on a 4.00 scale. Verify with official Southeast University (SEU) grading policy.",
+  "policyNote": "Default 4.00 scale shown below — verify with official SEU grading policy.",
+  "grades": [
+    { "letter": "A+", "range": "80 - 100", "minMarks": 80, "maxMarks": 100, "point": 4.00, "description": "Outstanding" },
+    { "letter": "A",  "range": "75 - 79",  "minMarks": 75, "maxMarks": 79,  "point": 3.75, "description": "Excellent" },
+    { "letter": "A-", "range": "70 - 74",  "minMarks": 70, "maxMarks": 74,  "point": 3.50, "description": "Very Good" },
+    { "letter": "B+", "range": "65 - 69",  "minMarks": 65, "maxMarks": 69,  "point": 3.25, "description": "Good" },
+    { "letter": "B",  "range": "60 - 64",  "minMarks": 60, "maxMarks": 64,  "point": 3.00, "description": "Satisfactory" },
+    { "letter": "B-", "range": "55 - 59",  "minMarks": 55, "maxMarks": 59,  "point": 2.75, "description": "Above Average" },
+    { "letter": "C+", "range": "50 - 54",  "minMarks": 50, "maxMarks": 54,  "point": 2.50, "description": "Average" },
+    { "letter": "C",  "range": "45 - 49",  "minMarks": 45, "maxMarks": 49,  "point": 2.25, "description": "Below Average" },
+    { "letter": "D",  "range": "40 - 44",  "minMarks": 40, "maxMarks": 44,  "point": 2.00, "description": "Pass" },
+    { "letter": "F",  "range": "< 40",     "minMarks": 0,  "maxMarks": 39,  "point": 0.00, "description": "Fail" }
+  ]
+}

@@ -1,0 +1,105 @@
+{
+  "_comment": "General payment method guidance for Southeast University (SEU) students. Official payment details must be confirmed with the SEU Accounts Office.",
+  "disclaimer": "Official payment details must be confirmed with the SEU Accounts Office.",
+  "methods": [
+    {
+      "id": "bank",
+      "name": "Bank Deposit",
+      "badge": "Designated Bank Branches",
+      "icon": "bank",
+      "accountLabel": "Official Bank Account Details",
+      "accountValue": "Not available yet — confirm designated bank branch and account number with the SEU Accounts Office",
+      "referenceFormat": "Use your Student ID and Semester Code (confirm with the SEU Accounts Office)",
+      "steps": [
+        "Collect the tuition fee deposit slip from the designated bank branch or the SEU Accounts Office.",
+        "Write your full name, Student ID, Department, Batch, Semester, and the installment amount you are paying.",
+        "Deposit the amount at the bank counter and make sure the officer stamps and signs both the bank copy and the student copy.",
+        "Keep the stamped student copy safely and submit or show a copy to the SEU Accounts Office if required."
+      ],
+      "notes": [
+        "Official payment details must be confirmed with the SEU Accounts Office.",
+        "Double-check your Student ID on the deposit slip before leaving the bank counter.",
+        "Keep a clear photo or scan of the stamped bank receipt for your personal records."
+      ]
+    },
+    {
+      "id": "bkash",
+      "name": "bKash",
+      "badge": "Mobile Banking",
+      "icon": "mobile",
+      "accountLabel": "bKash Education Fee / Biller Info",
+      "accountValue": "Not available yet — confirm official bKash Biller ID or UMS payment gateway link with the SEU Accounts Office",
+      "referenceFormat": "Use your Student ID as the Reference / Bill Number",
+      "steps": [
+        "Check your SEU UMS portal or contact the SEU Accounts Office for the active bKash Education Fee biller or online gateway option.",
+        "Select the authorized Southeast University biller option and enter your Student ID and billing semester.",
+        "Verify your name, Student ID, and installment amount before entering your PIN.",
+        "Complete the payment and save the confirmation SMS and digital receipt.",
+        "Record your bKash Transaction ID (TrxID) and payment date in the Payment Tracker on this page."
+      ],
+      "notes": [
+        "Official payment details must be confirmed with the SEU Accounts Office.",
+        "Never share your bKash PIN or OTP with anyone.",
+        "Keep the bKash TrxID and digital receipt until the payment reflects in your student ledger."
+      ]
+    },
+    {
+      "id": "nagad",
+      "name": "Nagad",
+      "badge": "Mobile Banking",
+      "icon": "mobile",
+      "accountLabel": "Nagad Bill Pay / Gateway Info",
+      "accountValue": "Not available yet — confirm official Nagad biller code or UMS gateway option with the SEU Accounts Office",
+      "referenceFormat": "Use your Student ID as the Reference / Bill Number",
+      "steps": [
+        "Confirm the active Nagad biller or online payment gateway option with the SEU Accounts Office or your UMS portal.",
+        "Enter your Student ID, semester code, and the exact installment amount.",
+        "Review the student reference details on the confirmation screen and complete the transaction.",
+        "Save the Nagad Transaction ID (TrxID) in the Payment Tracker above and keep a screenshot of the receipt."
+      ],
+      "notes": [
+        "Official payment details must be confirmed with the SEU Accounts Office.",
+        "Check whether any gateway convenience charge applies before confirming the payment.",
+        "Retain the Nagad TrxID until your student ledger is updated."
+      ]
+    },
+    {
+      "id": "rocket",
+      "name": "Rocket (DBBL)",
+      "badge": "Mobile Banking",
+      "icon": "mobile",
+      "accountLabel": "Rocket Biller ID",
+      "accountValue": "Not available yet — confirm official Rocket Biller ID with the SEU Accounts Office",
+      "referenceFormat": "Use your Student ID as the Bill / Reference Number",
+      "steps": [
+        "Verify the official SEU Rocket Biller ID with the SEU Accounts Office before initiating a transfer.",
+        "Open the Rocket app or USSD menu, select Bill Pay, and enter your Student ID and installment amount.",
+        "Verify all details carefully and confirm the transaction.",
+        "Save the Transaction ID from the confirmation SMS in your Payment Tracker."
+      ],
+      "notes": [
+        "Official payment details must be confirmed with the SEU Accounts Office.",
+        "Keep the confirmation SMS and submit proof of payment to the Accounts Office if requested."
+      ]
+    },
+    {
+      "id": "cash",
+      "name": "Cash / Booth at Accounts Office",
+      "badge": "On-Campus",
+      "icon": "office",
+      "accountLabel": "On-Campus Authorized Collection Booth",
+      "accountValue": "Authorized Bank Booth inside the SEU Campus (Sunday to Thursday, 10:00 AM – 3:30 PM; confirm current hours with the SEU Accounts Office)",
+      "referenceFormat": "Bring your Student ID Card and Registration / Advising Slip",
+      "steps": [
+        "Visit the authorized bank collection booth inside the Southeast University campus during official operating hours.",
+        "Present your Student ID card and state which installment (1st, 2nd, or 3rd) you are paying.",
+        "Pay the amount at the counter and collect the printed official money receipt.",
+        "Check that your Student ID, name, and paid amount are printed accurately on the receipt before leaving."
+      ],
+      "notes": [
+        "Official payment details must be confirmed with the SEU Accounts Office.",
+        "Pay only at the authorized campus counter/booth and always keep the printed receipt."
+      ]
+    }
+  ]
+}
